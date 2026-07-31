@@ -20,7 +20,7 @@ export function Footer() {
           <ScrollReveal direction="left" className="lg:col-span-2">
             <div className="inline-flex overflow-hidden rounded-2xl bg-white p-2 ring-1 ring-white/10">
               <Image
-                src="/logo.png"
+                src="/logo-maucco.jpg"
                 alt={company.fullName}
                 width={150}
                 height={150}

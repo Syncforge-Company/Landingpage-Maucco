@@ -40,7 +40,7 @@ export function Header() {
           className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white"
         >
           <Image
-            src="/logo.png"
+            src="/logo-maucco.jpg"
             alt="Maucco Consultoria e Assessoria Ambiental"
             width={150}
             height={150}

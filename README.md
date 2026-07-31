@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./public/logo.png" alt="Maucco Consultoria e Assessoria Ambiental" width="120" />
+  <img src="./public/logo-maucco.jpg" alt="Maucco Consultoria e Assessoria Ambiental" width="120" />
 
   # Maucco Consultoria Ambiental
 
@@ -96,7 +96,7 @@ src/
 
 public/
 ├── assets/                  # Ícones sociais locais
-└── logo.png                 # Logo da Maucco
+└── logo-maucco.jpg          # Logo da Maucco
 ```
 
 ## Personalização
@@ -118,7 +118,7 @@ src/constants/faq.ts
 
 ### Identidade visual
 
-As cores, fontes e variáveis globais ficam em `src/app/globals.css`. A logo principal fica em `public/logo.png`.
+As cores, fontes e variáveis globais ficam em `src/app/globals.css`. A logo principal fica em `public/logo-maucco.jpg`.
 
 ## Uso com ngrok
 

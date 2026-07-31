@@ -56,7 +56,7 @@ export function ImagePlaceholder({
       <div className="relative flex flex-col items-center gap-5 px-8 text-center">
         <div className="rounded-4xl bg-white p-4 shadow-2xl shadow-black/15 ring-1 ring-black/5">
           <Image
-            src="/logo.png"
+            src="/logo-maucco.jpg"
             alt=""
             width={150}
             height={150}
