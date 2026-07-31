@@ -33,6 +33,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/logo-maucco.jpg",
+    shortcut: "/logo-maucco.jpg",
+    apple: "/logo-maucco.jpg",
+  },
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
