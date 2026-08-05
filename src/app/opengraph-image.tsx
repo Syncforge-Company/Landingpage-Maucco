@@ -14,7 +14,7 @@ export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
   const logoData = await readFile(
-    join(process.cwd(), "public", "logo-maucco2.png"),
+    join(process.cwd(), "public", "logo-maucco-clean.png"),
     "base64",
   );
   const logoSrc = `data:image/png;base64,${logoData}`;
@@ -24,6 +24,8 @@ export default async function OpenGraphImage() {
       style={{
         position: "relative",
         display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
         width: "100%",
         height: "100%",
         overflow: "hidden",
@@ -49,7 +51,7 @@ export default async function OpenGraphImage() {
         style={{
           position: "absolute",
           bottom: -220,
-          left: 320,
+          left: -100,
           width: 500,
           height: 500,
           border: "2px solid rgba(255,255,255,0.08)",
@@ -57,79 +59,14 @@ export default async function OpenGraphImage() {
         }}
       />
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          width: 760,
-          padding: "72px 0 72px 76px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignSelf: "flex-start",
-            padding: "10px 18px",
-            border: "1px solid rgba(255,255,255,0.18)",
-            borderRadius: 9999,
-            background: "rgba(255,255,255,0.08)",
-            color: "#9de391",
-            fontSize: 18,
-            fontWeight: 700,
-            letterSpacing: 2,
-          }}
-        >
-          CONSULTORIA AMBIENTAL PARA EMPRESAS
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            marginTop: 28,
-            fontSize: 62,
-            fontWeight: 800,
-            lineHeight: 1.08,
-            letterSpacing: -2,
-          }}
-        >
-          Sua empresa em dia com as exigências ambientais.
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            marginTop: 24,
-            maxWidth: 690,
-            color: "rgba(255,255,255,0.72)",
-            fontSize: 25,
-            lineHeight: 1.4,
-          }}
-        >
-          Licenciamento, gestão de resíduos, laudos e regularização ambiental
-          em Manaus.
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            marginTop: 42,
-            color: "rgba(255,255,255,0.48)",
-            fontSize: 17,
-            letterSpacing: 1,
-          }}
-        >
-          MANAUS, AMAZONAS
-        </div>
-      </div>
-
+      {/* Left side: Logo */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flex: 1,
-          paddingRight: 72,
+          paddingLeft: 76,
+          paddingRight: 40,
         }}
       >
         <div
@@ -144,9 +81,73 @@ export default async function OpenGraphImage() {
             boxShadow: "0 32px 80px rgba(0,0,0,0.25)",
           }}
         >
-          {/* ImageResponse uses Satori, so a native image is required here. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoSrc} alt="" width={250} height={250} />
+          <img src={logoSrc} alt="" width={250} height={250} style={{ objectFit: "contain" }} />
+        </div>
+      </div>
+
+      {/* Right side: Text content */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          flex: 1,
+          paddingRight: 76,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignSelf: "flex-start",
+            padding: "10px 18px",
+            border: "1px solid rgba(255,255,255,0.18)",
+            borderRadius: 9999,
+            background: "rgba(255,255,255,0.08)",
+            color: "#9de391",
+            fontSize: 16,
+            fontWeight: 700,
+            letterSpacing: 2,
+          }}
+        >
+          CONSULTORIA AMBIENTAL PARA EMPRESAS
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            marginTop: 24,
+            fontSize: 54,
+            fontWeight: 800,
+            lineHeight: 1.1,
+            letterSpacing: -1.5,
+          }}
+        >
+          Sua empresa em dia com as exigências ambientais.
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            marginTop: 20,
+            color: "rgba(255,255,255,0.72)",
+            fontSize: 22,
+            lineHeight: 1.4,
+          }}
+        >
+          Licenciamento, gestão de resíduos, laudos e regularização ambiental em Manaus.
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            marginTop: 32,
+            color: "rgba(255,255,255,0.48)",
+            fontSize: 16,
+            letterSpacing: 1,
+          }}
+        >
+          MANAUS, AMAZONAS
         </div>
       </div>
     </div>,
