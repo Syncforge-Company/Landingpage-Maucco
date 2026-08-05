@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/logo-maucco.jpg",
-    shortcut: "/logo-maucco.jpg",
-    apple: "/logo-maucco.jpg",
+    icon: "/logo-maucco2.png",
+    shortcut: "/logo-maucco2.png",
+    apple: "/logo-maucco2.png",
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
@@ -91,7 +91,7 @@ const structuredData = {
   name: company.fullName,
   alternateName: company.name,
   url: siteConfig.url,
-  logo: `${siteConfig.url}/logo-maucco.jpg`,
+  logo: `${siteConfig.url}/logo-maucco2.png`,
   image: `${siteConfig.url}/opengraph-image`,
   description: siteConfig.description,
   email: company.email,

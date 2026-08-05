@@ -14,9 +14,9 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "pt-BR",
     icons: [
       {
-        src: "/logo-maucco.jpg",
-        sizes: "150x150",
-        type: "image/jpeg",
+        src: "/logo-maucco2.png",
+        sizes: "512x512",
+        type: "image/png",
       },
     ],
   };

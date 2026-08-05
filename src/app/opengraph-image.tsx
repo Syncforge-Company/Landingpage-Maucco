@@ -14,7 +14,7 @@ export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
   const logoData = await readFile(
-    join(process.cwd(), "public", "logo-maucco-clean.png"),
+    join(process.cwd(), "public", "logo-maucco2.png"),
     "base64",
   );
   const logoSrc = `data:image/png;base64,${logoData}`;
