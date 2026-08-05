@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 import { company } from "@/constants/company";
 import { services } from "@/constants/services";
@@ -42,15 +43,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
-    url: "/",
+    url: siteConfig.url,
     siteName: siteConfig.name,
     title: siteConfig.title,
     description: siteConfig.description,
     images: [
       {
-        url: "/opengraph-image",
+        url: `${siteConfig.url}/opengraph-image`,
+        secureUrl: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
+        type: "image/png",
         alt: "Maucco Consultoria Ambiental em Manaus",
       },
     ],
@@ -59,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: ["/opengraph-image"],
+    images: [`${siteConfig.url}/opengraph-image`],
   },
   robots: {
     index: true,
@@ -152,6 +155,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );

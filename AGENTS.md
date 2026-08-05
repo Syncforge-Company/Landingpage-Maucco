@@ -8,7 +8,7 @@ O objetivo da aplicação é funcionar como um **funil de vendas**, apresentando
 
 **Produção**
 
-https://maucco.vercel.app/
+https://maucco.com.br/
 
 **Repositório**
 
