@@ -11,12 +11,12 @@ import { cn } from "@/lib/utils";
 
 const navigation = [
   {
-    label: "Serviços",
-    href: "#servicos",
+    label: "Orgãos Ambientais",
+    href: "#orgaos",
   },
   {
-    label: "Benefícios",
-    href: "#beneficios",
+    label: "Serviços",
+    href: "#servicos",
   },
   {
     label: "Como funciona",
@@ -62,7 +62,7 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <WhatsappButton label="Entre em contato" />
+          <WhatsappButton label="Agende uma consulta gratuita" />
         </div>
 
         <Button

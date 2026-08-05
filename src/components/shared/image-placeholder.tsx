@@ -54,13 +54,13 @@ export function ImagePlaceholder({
       />
 
       <div className="relative flex flex-col items-center gap-5 px-8 text-center">
-        <div className="rounded-4xl bg-white p-4 shadow-2xl shadow-black/15 ring-1 ring-black/5">
+        <div className="rounded-4xl bg-white p-5 shadow-2xl shadow-black/20 ring-1 ring-black/10">
           <Image
-            src="/logo-maucco.jpg"
-            alt=""
-            width={150}
-            height={150}
-            className="size-28 object-contain sm:size-36"
+            src="/logo-maucco2.png"
+            alt={label}
+            width={240}
+            height={240}
+            className="size-36 object-contain sm:size-48 lg:size-56"
           />
         </div>
 

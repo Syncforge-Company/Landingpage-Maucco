@@ -1,7 +1,4 @@
-import { AuthoritySection } from "@/components/sections/authority-section";
-import { BenefitsSection } from "@/components/sections/benefits-section";
 import { FaqSection } from "@/components/sections/faq-section";
-import { FeaturedServiceSection } from "@/components/sections/featured-service-section";
 import { FinalCtaSection } from "@/components/sections/final-cta-section";
 import { Footer } from "@/components/sections/footer";
 import { Header } from "@/components/sections/header";
@@ -18,12 +15,9 @@ export default function Home() {
 
       <main>
         <HeroSection />
-        <AuthoritySection />
         <ProblemsSection />
         <ServicesSection />
-        <BenefitsSection />
         <ProcessSection />
-        <FeaturedServiceSection />
         <FaqSection />
         <FinalCtaSection />
       </main>

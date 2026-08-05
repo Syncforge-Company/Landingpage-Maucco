@@ -53,9 +53,9 @@ export const services = [
     icon: Leaf,
   },
   {
-    title: "Segurança do trabalho",
+    title: "Elaboração de projetos",
     description:
-      "Orientamos sua empresa para prevenir riscos e atender às normas de segurança.",
+      "Apoiamos a elaboração de projetos ambientais, como recuperação de áreas degradadas.",
     icon: ShieldCheck,
   },
 ] as const;

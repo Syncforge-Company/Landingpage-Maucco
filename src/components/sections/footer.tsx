@@ -38,12 +38,12 @@ export function Footer() {
             <h2 className="font-semibold">Navegação</h2>
 
             <nav className="mt-5 flex flex-col gap-3 text-sm text-white/60">
-              <Link href="#servicos" className="hover:text-white">
-                Serviços
+              <Link href="#problemas" className="hover:text-white">
+                Problemas
               </Link>
 
-              <Link href="#beneficios" className="hover:text-white">
-                Benefícios
+              <Link href="#servicos" className="hover:text-white">
+                Serviços
               </Link>
 
               <Link href="#processo" className="hover:text-white">

@@ -1,32 +1,11 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  CheckCircle2,
-  FileCheck2,
-  Recycle,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { WhatsappButton } from "@/components/shared/whatsapp-button";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-const highlights = [
-  {
-    label: "Licenciamento ambiental",
-    icon: FileCheck2,
-  },
-  {
-    label: "Gestão de resíduos",
-    icon: Recycle,
-  },
-  {
-    label: "Exigências em dia",
-    icon: ShieldCheck,
-  },
-] as const;
 
 export function HeroSection() {
   return (
@@ -40,19 +19,17 @@ export function HeroSection() {
           </Badge>
 
           <h1 className="max-w-3xl text-4xl leading-tight font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            Mantenha sua empresa em dia com as exigências ambientais, sem
-            complicação.
+            Evite multas ambientais, regularize sua empresa sem complicação
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
-            Cuidamos de licenças, resíduos, laudos e outras obrigações
-            ambientais para sua empresa seguir em frente com segurança.
+            Cuidamos da parte técnica elaborando estudos, laudos e outras obrigações da sua licença ambiental para que sua empresa possa operar com segurança
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <WhatsappButton
               size="lg"
-              label="Entre em contato"
+              label="Agente uma consulta gratuita"
               className="bg-[#5abd55] text-white hover:bg-[#4ca849]"
             />
 
@@ -63,28 +40,9 @@ export function HeroSection() {
               variant="outline"
               className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
             >
-              Conheça nossos serviços
+              Principais serviços
               <ArrowRight className="size-4" />
             </Button>
-          </div>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {highlights.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <div
-                  key={item.label}
-                  className="flex items-center gap-3 text-sm text-white/80"
-                >
-                  <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/10">
-                    <Icon className="size-4 text-[#74cf68]" />
-                  </div>
-
-                  <span>{item.label}</span>
-                </div>
-              );
-            })}
           </div>
         </ScrollReveal>
 
@@ -93,25 +51,8 @@ export function HeroSection() {
             <ImagePlaceholder
               label="Maucco Consultoria Ambiental"
               variant="dark"
-              className="aspect-[4/4.6] w-full rounded-3xl pb-24"
+              className="aspect-square w-full rounded-3xl"
             />
-
-            <div className="absolute right-7 bottom-7 left-7 rounded-2xl border border-white/15 bg-[#0b2d26]/90 p-5 backdrop-blur">
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#74cf68]" />
-
-                <div>
-                  <p className="font-semibold">
-                    Orientação para sua empresa
-                  </p>
-
-                  <p className="mt-1 text-sm leading-6 text-white/70">
-                    Entendemos sua realidade e mostramos o que precisa ser
-                    feito em cada etapa.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </ScrollReveal>
       </div>

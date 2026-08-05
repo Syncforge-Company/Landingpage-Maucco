@@ -11,7 +11,7 @@ export function FinalCtaSection() {
         </div>
 
         <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-          Precisa de ajuda com alguma exigência ambiental?
+          Ficou com alguma dúvida? Converse com a gente pelo WhatsApp.
         </h2>
 
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
@@ -21,7 +21,7 @@ export function FinalCtaSection() {
 
         <WhatsappButton
           size="lg"
-          label="Conversar pelo WhatsApp"
+          label="Agende uma consulta gratuita"
           className="mt-8 bg-[#5abd55] text-white hover:bg-[#4ca849]"
         />
       </ScrollReveal>

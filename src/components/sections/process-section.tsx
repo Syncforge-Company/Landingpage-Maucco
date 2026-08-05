@@ -7,6 +7,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
+import { WhatsappButton } from "@/components/shared/whatsapp-button";
 
 const steps = [
   {
@@ -46,16 +47,25 @@ export function ProcessSection() {
       className="scroll-mt-20 bg-[#0d3028] px-5 py-16 text-white sm:px-6 md:py-20 lg:px-8 lg:py-24"
     >
       <div className="mx-auto max-w-7xl">
-        <ScrollReveal className="max-w-3xl">
+        <ScrollReveal>
           <Badge className="border-white/15 bg-white/10 text-white hover:bg-white/10">
             Como funciona
           </Badge>
 
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-            Você sabe o que acontece em cada etapa.
-          </h2>
+          <div className="mt-5 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+              Como acontece o nosso atendimento.
+            </h2>
 
-          <p className="mt-5 text-base leading-7 text-white/70 sm:text-lg">
+            <WhatsappButton
+              size="lg"
+              label="Agende uma consulta gratuita"
+              className="shrink-0 bg-[#5abd55] text-white hover:bg-[#4ca849]"
+              message="Olá! Quero saber mais sobre como funciona o atendimento da Maucco."
+            />
+          </div>
+
+          <p className="mt-5 max-w-3xl text-base leading-7 text-white/70 sm:text-lg">
             Explicamos o que precisa ser feito, quais são os próximos passos e
             como vamos acompanhar o processo.
           </p>
