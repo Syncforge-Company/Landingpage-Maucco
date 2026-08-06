@@ -81,6 +81,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  verification: {
+    google: "google9b618c6e6b5f798b",
+  },
   other: {
     "geo.region": "BR-AM",
     "geo.placename": "Manaus",
