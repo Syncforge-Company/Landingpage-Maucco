@@ -82,7 +82,7 @@ export default async function OpenGraphImage() {
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoSrc} alt="" width={250} height={250} style={{ objectFit: "contain" }} />
+          <img src={logoSrc} alt="" width={180} height={250} style={{ objectFit: "contain" }} />
         </div>
       </div>
 

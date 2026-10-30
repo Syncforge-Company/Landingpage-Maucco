@@ -1,60 +1,109 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 
+import { PhotoBackdrop } from "@/components/shared/photo-backdrop";
 import { WhatsappButton } from "@/components/shared/whatsapp-button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
-import { ScrollReveal } from "@/components/shared/scroll-reveal";
-import { Badge } from "@/components/ui/badge";
+import { BorderBeam } from "@/components/ui/border-beam";
 import { Button } from "@/components/ui/button";
+import { organs } from "@/constants/organs";
+import { photos } from "@/constants/photos";
+import { searchIntents } from "@/constants/services";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[#0d3028] text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(100,201,88,0.25),transparent_38%)]" />
+    <section className="relative isolate overflow-hidden bg-brand-deep px-5 py-14 text-white sm:px-6 md:py-20 lg:px-8 lg:py-24">
+      <PhotoBackdrop
+        photo={photos.encontroDasAguas}
+        priority
+        imageClassName="object-[30%_100%]"
+        overlayClassName="bg-linear-to-b from-brand-deep/90 via-brand-deep/80 to-brand-deep/55 lg:bg-linear-to-r lg:from-brand-deep/95 lg:via-brand-deep/75 lg:to-brand-deep/15"
+      />
 
-      <div className="relative mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-12 px-5 py-16 sm:px-6 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
-        <ScrollReveal>
-          <Badge className="mb-6 border-white/15 bg-white/10 text-white hover:bg-white/10">
-            Consultoria ambiental para empresas
-          </Badge>
-
-          <h1 className="max-w-3xl text-4xl leading-tight font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            Evite multas ambientais, regularize sua empresa sem complicação
+      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.25fr_0.9fr] lg:gap-16">
+        <div>
+          <h1 className="text-4xl leading-[1.1] font-bold text-balance sm:text-5xl">
+            Consultoria ambiental em Manaus: evite multas e regularize sua
+            empresa sem complicação
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
-            Cuidamos da parte técnica elaborando estudos, laudos e outras obrigações da sua licença ambiental para que sua empresa possa operar com segurança
+          <p className="mt-6 max-w-xl text-lg leading-8 text-white/80">
+            Cuidamos da parte técnica, elaborando estudos, laudos e outras
+            obrigações da sua licença ambiental, para que sua empresa possa
+            operar com segurança.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <WhatsappButton
-              size="lg"
-              label="Agente uma consulta gratuita"
-              className="bg-[#5abd55] text-white hover:bg-[#4ca849]"
-            />
+            <WhatsappButton size="lg" tone="leaf" />
 
             <Button
               nativeButton={false}
-              render={<Link href="#servicos" />}
+              render={<Link href="/#servicos" />}
               size="lg"
               variant="outline"
-              className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
+              className="h-12 border-white/25 bg-transparent px-6 text-base text-white hover:bg-white/10 hover:text-white"
             >
               Principais serviços
               <ArrowRight className="size-4" />
             </Button>
           </div>
-        </ScrollReveal>
+        </div>
 
-        <ScrollReveal direction="right" delay={0.12} className="relative">
-          <div className="relative overflow-hidden rounded-4xl border border-white/10 bg-white/5 p-3 shadow-2xl">
-            <ImagePlaceholder
-              label="Maucco Consultoria Ambiental"
-              variant="dark"
-              className="aspect-square w-full rounded-3xl"
-            />
+        <div className="relative rounded-lg bg-card p-6 text-card-foreground shadow-2xl shadow-black/30 sm:p-8">
+          <BorderBeam
+            size={140}
+            duration={12}
+            borderWidth={2}
+            colorFrom="var(--brand-leaf)"
+            colorTo="var(--brand-mint)"
+          />
+
+          <h2 className="text-2xl leading-tight font-bold">
+            O que sua empresa precisa resolver?
+          </h2>
+
+          <ul className="mt-5 border-t-2 border-foreground">
+            {searchIntents.map((intent) => (
+              <li key={intent.label} className="border-b">
+                <Link
+                  href={`/servicos/${intent.slug}`}
+                  className="group flex items-center justify-between gap-4 py-3.5 transition-colors hover:text-primary"
+                >
+                  <span>
+                    <span className="block text-base leading-6 font-semibold">
+                      {intent.label}
+                    </span>
+                    <span className="block text-sm leading-6 text-muted-foreground">
+                      {intent.detail}
+                    </span>
+                  </span>
+
+                  <ChevronRight className="size-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+            <p className="text-sm text-muted-foreground">
+              Processos nos órgãos ambientais
+            </p>
+
+            <ul className="flex items-center gap-3">
+              {organs.map((organ) => (
+                <li key={organ.title}>
+                  <Image
+                    src={organ.imageSrc}
+                    alt={`Logotipo ${organ.title}`}
+                    width={40}
+                    height={40}
+                    className="size-10 object-contain"
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );

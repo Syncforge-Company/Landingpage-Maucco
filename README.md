@@ -20,9 +20,9 @@ O site reúne os serviços, benefícios, processo de atendimento e perguntas fre
 - Layout responsivo para desktop e dispositivos móveis.
 - Navegação mobile expansível sem sobrepor o header.
 - CTAs integrados ao WhatsApp.
-- Animações acionadas conforme o conteúdo entra na viewport.
-- Preferência de movimento reduzido respeitada pelo Motion.
-- Componentes de fallback para áreas sem imagem disponível.
+- Páginas estáticas por serviço com dados estruturados, geradas a partir de `src/constants/services.ts`.
+- `/llms.txt` gerado a partir das constantes.
+- Fotos reais do Amazonas, com créditos em `src/constants/photos.ts`.
 - Ícones locais para WhatsApp e Instagram.
 - Conteúdo estruturado em constantes para facilitar manutenção.
 
@@ -36,7 +36,8 @@ O site reúne os serviços, benefícios, processo de atendimento e perguntas fre
 | [Tailwind CSS 4](https://tailwindcss.com/) | Estilização responsiva |
 | [Base UI](https://base-ui.com/) | Primitivos acessíveis |
 | [shadcn](https://ui.shadcn.com/) | Componentes de interface |
-| [Motion](https://motion.dev/) | Animações de entrada por scroll |
+| [Motion](https://motion.dev/) | Animações discretas |
+| [Magic UI](https://magicui.design/) e [React Bits](https://reactbits.dev/) | Bento Grid, Border Beam, Blur Fade, Marquee, Spotlight Card e Blur Text |
 | [Lucide](https://lucide.dev/) | Ícones da interface |
 
 ## Como executar

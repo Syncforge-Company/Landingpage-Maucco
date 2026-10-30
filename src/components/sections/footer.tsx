@@ -4,9 +4,11 @@ import { Mail, MapPin } from "lucide-react";
 
 import { InstagramIcon } from "../../../public/assets/instagram-icon";
 import { WhatsappIcon } from "../../../public/assets/whatsapp-icon";
-import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { Separator } from "@/components/ui/separator";
 import { company, createWhatsappUrl } from "@/constants/company";
+import { navigation } from "@/constants/navigation";
+import { photos } from "@/constants/photos";
+import { getServiceHref, services } from "@/constants/services";
 
 export function Footer() {
   const whatsappUrl = createWhatsappUrl(
@@ -14,52 +16,64 @@ export function Footer() {
   );
 
   return (
-    <footer className="bg-[#09251f] px-5 pt-14 pb-24 text-white sm:px-6 md:pb-8 lg:px-8">
+    <footer className="bg-brand-ink px-5 pt-14 pb-24 text-white sm:px-6 md:pb-8 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <ScrollReveal direction="left" className="lg:col-span-2">
-            <div className="inline-flex overflow-hidden rounded-2xl bg-white p-2 ring-1 ring-white/10">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_0.8fr_1fr]">
+          <div>
+            <div className="inline-flex rounded-lg bg-white p-3">
               <Image
                 src="/logo-maucco.jpg"
                 alt={company.fullName}
-                width={150}
-                height={150}
-                className="size-24 object-contain"
+                width={938}
+                height={306}
+                className="h-12 w-auto object-contain"
               />
             </div>
 
-            <p className="mt-5 max-w-md text-sm leading-7 text-white/60">
+            <p className="mt-5 max-w-md text-sm leading-7 text-white/70">
               Ajudamos empresas com licenças, documentos e outras exigências
               ambientais, com orientação e acompanhamento em cada etapa.
             </p>
-          </ScrollReveal>
+          </div>
 
-          <ScrollReveal delay={0.08}>
+          <div>
+            <h2 className="font-semibold">Serviços</h2>
+
+            <nav
+              aria-label="Serviços"
+              className="mt-5 flex flex-col gap-3 text-sm text-white/70"
+            >
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={getServiceHref(service)}
+                  className="hover:text-white"
+                >
+                  {service.title}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div>
             <h2 className="font-semibold">Navegação</h2>
 
-            <nav className="mt-5 flex flex-col gap-3 text-sm text-white/60">
-              <Link href="#problemas" className="hover:text-white">
-                Problemas
-              </Link>
-
-              <Link href="#servicos" className="hover:text-white">
-                Serviços
-              </Link>
-
-              <Link href="#processo" className="hover:text-white">
-                Como funciona
-              </Link>
-
-              <Link href="#duvidas" className="hover:text-white">
-                Perguntas frequentes
-              </Link>
+            <nav
+              aria-label="Rodapé"
+              className="mt-5 flex flex-col gap-3 text-sm text-white/70"
+            >
+              {navigation.map((item) => (
+                <Link key={item.href} href={item.href} className="hover:text-white">
+                  {item.label}
+                </Link>
+              ))}
             </nav>
-          </ScrollReveal>
+          </div>
 
-          <ScrollReveal delay={0.16}>
+          <div>
             <h2 className="font-semibold">Contato</h2>
 
-            <div className="mt-5 space-y-4 text-sm text-white/60">
+            <div className="mt-5 space-y-4 text-sm text-white/70">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -84,7 +98,7 @@ export function Footer() {
               </div>
 
               <a
-                href="https://instagram.com/mauccobr"
+                href={company.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:text-white"
@@ -93,17 +107,35 @@ export function Footer() {
                 {company.instagram}
               </a>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
 
         <Separator className="my-8 bg-white/10" />
 
-        <div className="flex flex-col gap-3 text-xs leading-5 text-white/45 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col gap-3 text-xs leading-5 text-white/60 lg:flex-row lg:items-end lg:justify-between">
           <p>
             © {new Date().getFullYear()} Maucco. Todos os direitos reservados.
           </p>
 
           <p className="max-w-2xl lg:text-right">
+            <span className="block">
+              Fotos:{" "}
+              {Object.values(photos).map((photo, index) => (
+                <span key={photo.src}>
+                  {index > 0 && ", "}
+                  <a
+                    href={photo.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-white/25 underline-offset-4 hover:text-white"
+                  >
+                    {photo.caption}
+                  </a>{" "}
+                  ({photo.author}, {photo.license})
+                </span>
+              ))}
+              . Imagens redimensionadas e recortadas.
+            </span>
             <span className="block">
               Site desenvolvido pela{" "}
               <a
