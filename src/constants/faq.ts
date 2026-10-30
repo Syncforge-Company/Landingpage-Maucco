@@ -10,6 +10,11 @@ export const frequentlyAskedQuestions = [
       "Sim. Organizamos os documentos, acompanhamos os prazos e orientamos sua empresa durante todo o processo de renovação.",
   },
   {
+    question: "Recebi uma notificação do IPAAM ou da SEMMAS. O que faço?",
+    answer:
+      "Verifique o prazo indicado na notificação e procure orientação antes que ele termine. Analisamos a exigência, preparamos a resposta e acompanhamos o processo junto ao órgão.",
+  },
+  {
     question: "O que é PGRS?",
     answer:
       "PGRS é a sigla para Plano de Gerenciamento de Resíduos Sólidos. Ele orienta como a empresa deve identificar, armazenar, transportar e destinar seus resíduos.",

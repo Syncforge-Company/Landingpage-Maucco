@@ -1,10 +1,6 @@
 import { company } from "@/constants/company";
 
-const configuredUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  process.env.VERCEL_PROJECT_PRODUCTION_URL ??
-  process.env.VERCEL_URL ??
-  "https://maucco.com.br";
+const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://maucco.com.br";
 
 const normalizedUrl = configuredUrl.startsWith("http")
   ? configuredUrl
@@ -13,10 +9,11 @@ const normalizedUrl = configuredUrl.startsWith("http")
 export const siteConfig = {
   name: company.fullName,
   shortName: company.name,
-  title: "Maucco | Consultoria e Assessoria Ambiental em Manaus",
+  title: "Consultoria Ambiental em Manaus | Maucco",
   description:
-    "Consultoria ambiental em Manaus para licenciamento, gestão de resíduos, PGRS, laudos técnicos, ESG e regularização da sua empresa.",
+    "Consultoria ambiental em Manaus e no Amazonas: licenciamento, renovação de L.O., PGRS, outorga de poço, laudos e notificações do IPAAM e da SEMMAS.",
   url: new URL(normalizedUrl).origin,
+  ogImage: `${new URL(normalizedUrl).origin}/opengraph-image`,
   locale: "pt_BR",
   keywords: [
     "Licença ambiental",

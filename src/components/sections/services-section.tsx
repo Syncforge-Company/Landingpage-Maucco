@@ -1,79 +1,76 @@
-import { ArrowRight } from "lucide-react";
-
 import { WhatsappButton } from "@/components/shared/whatsapp-button";
-import { ScrollReveal } from "@/components/shared/scroll-reveal";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { createWhatsappUrl } from "@/constants/company";
-import { services } from "@/constants/services";
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
+import { BlurFade } from "@/components/ui/blur-fade";
+import { photos, type Photo } from "@/constants/photos";
+import { getServiceHref, services, type Service } from "@/constants/services";
+
+const cardLayouts: Partial<
+  Record<Service["slug"], { photo: Photo; className: string }>
+> = {
+  "licenciamento-ambiental-manaus": {
+    photo: photos.ponteRioNegro,
+    className: "sm:col-span-2 lg:row-span-2",
+  },
+  "outorga-agua-pocos-efluentes-manaus": {
+    photo: photos.encontroDasAguas,
+    className: "",
+  },
+  "projetos-ambientais-manaus": {
+    photo: photos.anavilhanas,
+    className: "sm:col-span-2",
+  },
+};
 
 export function ServicesSection() {
   return (
     <section
       id="servicos"
-      className="scroll-mt-20 bg-muted/50 px-5 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24"
+      className="scroll-mt-24 px-5 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
-        <ScrollReveal className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <BlurFade
+          inView
+          direction="up"
+          offset={12}
+          className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+        >
           <div className="max-w-3xl">
-            <Badge variant="secondary">Como podemos ajudar</Badge>
-
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">Conheça os principais serviços
+            <h2 className="text-3xl font-bold text-balance sm:text-4xl">
+              Serviços de consultoria ambiental para empresas
             </h2>
 
-            <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mt-5 text-lg leading-8 text-muted-foreground">
               Identificamos pendências, preparamos os documentos e acompanhamos
               os processos ambientais da sua empresa.
             </p>
           </div>
 
           <WhatsappButton
-            label="Agende uma consulta gratuita"
+            size="lg"
+            className="w-full sm:w-auto"
             message="Olá! Quero entender qual serviço ambiental minha empresa precisa. Podem me orientar?"
           />
-        </ScrollReveal>
+        </BlurFade>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <BentoGrid className="mt-12 sm:grid-cols-2 lg:auto-rows-[17rem] lg:grid-cols-4">
           {services.map((service, index) => {
-            const Icon = service.icon;
+            const layout = cardLayouts[service.slug];
 
             return (
-              <ScrollReveal
-                key={service.title}
-                delay={(index % 4) * 0.06}
-                className="h-full"
-              >
-                <Card className="group h-full rounded-2xl border-border/70 bg-card shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
-                  <CardContent className="p-6">
-                    <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                      <Icon className="size-5" />
-                    </div>
-
-                    <h3 className="mt-5 text-lg font-semibold">
-                      {service.title}
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      {service.description}
-                    </p>
-
-                    <a
-                      href={createWhatsappUrl(
-                        `Olá! Quero saber mais sobre ${service.title}. Podem me orientar?`,
-                      )}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-5 flex items-center gap-2 text-sm font-semibold text-primary"
-                    >
-                      Falar sobre este serviço
-                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                    </a>
-                  </CardContent>
-                </Card>
-              </ScrollReveal>
+              <BentoCard
+                key={service.slug}
+                name={service.title}
+                description={service.description}
+                href={getServiceHref(service)}
+                cta="Ver detalhes"
+                Icon={service.icon}
+                photo={layout?.photo}
+                featured={index === 0}
+                className={layout?.className}
+              />
             );
           })}
-        </div>
+        </BentoGrid>
       </div>
     </section>
   );

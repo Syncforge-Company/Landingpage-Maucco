@@ -5,8 +5,11 @@ export const company = {
   phoneLabel: "+55 (92) 98165-1939",
   email: "contato@maucco.com",
   instagram: "@mauccobr",
+  instagramUrl: "https://instagram.com/mauccobr",
   address: "Manaus, Amazonas",
 } as const;
+
+export const primaryCtaLabel = "Agende uma consulta gratuita";
 
 export function createWhatsappUrl(message: string) {
   return `https://wa.me/${company.phone}?text=${encodeURIComponent(message)}`;

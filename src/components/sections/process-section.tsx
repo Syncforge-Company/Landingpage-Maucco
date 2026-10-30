@@ -5,9 +5,8 @@ import {
   Settings2,
 } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
-import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { WhatsappButton } from "@/components/shared/whatsapp-button";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 const steps = [
   {
@@ -44,62 +43,60 @@ export function ProcessSection() {
   return (
     <section
       id="processo"
-      className="scroll-mt-20 bg-[#0d3028] px-5 py-16 text-white sm:px-6 md:py-20 lg:px-8 lg:py-24"
+      className="scroll-mt-24 bg-brand-deep px-5 py-16 text-white sm:px-6 md:py-20 lg:px-8 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
-        <ScrollReveal>
-          <Badge className="border-white/15 bg-white/10 text-white hover:bg-white/10">
-            Como funciona
-          </Badge>
-
-          <div className="mt-5 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
-              Como acontece o nosso atendimento.
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-3xl">
+            <h2 className="text-3xl font-bold text-balance sm:text-4xl">
+              Como acontece o nosso atendimento
             </h2>
 
-            <WhatsappButton
-              size="lg"
-              label="Agende uma consulta gratuita"
-              className="shrink-0 bg-[#5abd55] text-white hover:bg-[#4ca849]"
-              message="Olá! Quero saber mais sobre como funciona o atendimento da Maucco."
-            />
+            <p className="mt-5 text-lg leading-8 text-white/80">
+              Explicamos o que precisa ser feito, quais são os próximos passos e
+              como vamos acompanhar o processo.
+            </p>
           </div>
 
-          <p className="mt-5 max-w-3xl text-base leading-7 text-white/70 sm:text-lg">
-            Explicamos o que precisa ser feito, quais são os próximos passos e
-            como vamos acompanhar o processo.
-          </p>
-        </ScrollReveal>
+          <WhatsappButton
+            size="lg"
+            tone="leaf"
+            className="w-full sm:w-auto"
+            message="Olá! Quero saber mais sobre como funciona o atendimento da Maucco."
+          />
+        </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {steps.map((step, index) => {
             const Icon = step.icon;
 
             return (
-              <ScrollReveal
-                key={step.number}
-                delay={index * 0.07}
-                className="h-full"
-              >
-                <article className="h-full rounded-2xl border border-white/10 bg-white/5 p-6">
+              <li key={step.number}>
+                <BlurFade
+                  inView
+                  direction="up"
+                  offset={12}
+                  delay={index * 0.1}
+                  className="border-t-2 border-brand-mint pt-5"
+                >
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold text-[#74cf68]">
+                    <span className="text-3xl font-bold text-brand-mint tabular-nums">
                       {step.number}
                     </span>
 
-                    <Icon className="size-5 text-[#74cf68]" />
+                    <Icon className="size-5 text-brand-mint" />
                   </div>
 
-                  <h3 className="mt-8 text-xl font-semibold">{step.title}</h3>
+                  <h3 className="mt-5 text-xl font-semibold">{step.title}</h3>
 
-                  <p className="mt-3 text-sm leading-6 text-white/65">
+                  <p className="mt-3 text-base leading-7 text-white/75">
                     {step.description}
                   </p>
-                </article>
-              </ScrollReveal>
+                </BlurFade>
+              </li>
             );
           })}
-        </div>
+        </ol>
       </div>
     </section>
   );

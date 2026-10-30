@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
-import { company } from "@/constants/company";
-import { services } from "@/constants/services";
+import { JsonLd } from "@/components/shared/json-ld";
+import { MotionProvider } from "@/components/shared/motion-provider";
 import { siteConfig } from "@/lib/site";
+import { organizationSchema } from "@/lib/structured-data";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  axes: ["wdth"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -49,8 +47,8 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: `${siteConfig.url}/opengraph-image`,
-        secureUrl: `${siteConfig.url}/opengraph-image`,
+        url: siteConfig.ogImage,
+        secureUrl: siteConfig.ogImage,
         width: 1200,
         height: 630,
         type: "image/png",
@@ -62,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/opengraph-image`],
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,
@@ -90,56 +88,6 @@ export const metadata: Metadata = {
   },
 };
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": ["Organization", "ProfessionalService"],
-  "@id": `${siteConfig.url}/#organization`,
-  name: company.fullName,
-  alternateName: company.name,
-  url: siteConfig.url,
-  logo: `${siteConfig.url}/logo-maucco2.png`,
-  image: `${siteConfig.url}/opengraph-image`,
-  description: siteConfig.description,
-  email: company.email,
-  telephone: company.phoneLabel,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Manaus",
-    addressRegion: "AM",
-    addressCountry: "BR",
-  },
-  areaServed: [
-    {
-      "@type": "City",
-      name: "Manaus",
-    },
-    {
-      "@type": "AdministrativeArea",
-      name: "Amazonas",
-    },
-  ],
-  sameAs: ["https://instagram.com/mauccobr"],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: company.phoneLabel,
-    email: company.email,
-    contactType: "customer service",
-    availableLanguage: "Portuguese",
-  },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Serviços ambientais",
-    itemListElement: services.map((service) => ({
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: service.title,
-        description: service.description,
-      },
-    })),
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -148,16 +96,11 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${archivo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
-          }}
-        />
-        {children}
+        <JsonLd data={organizationSchema} />
+        <MotionProvider>{children}</MotionProvider>
         <Analytics />
       </body>
     </html>
